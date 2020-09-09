@@ -1,8 +1,20 @@
-import React from 'react';
-// import { Form } from '../Components/Form';
+import React, { useState } from 'react';
+import { Form } from '../Components/Form';
+const obejeto = {
+  email: null,
+  senha: null,
+};
 
 const Register = () => {
-  return <div>{/* <Form>Registro</Form> */}</div>;
+  const [inputs, setInputs] = useState(obejeto);
+
+  return (
+    <div>
+      <form>
+        <input></input>
+      </form>
+    </div>
+  );
 };
 
 export default Register;
