@@ -66,7 +66,7 @@ const ObjetoTest = {
 };
 
 axios.defaults.baseURL = requisicaoUrl;
-axios.defaults.headers.common['Authorization'] = token;
+// axios.defaults.headers.common['Authorization'] = token;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const Form = () => {
