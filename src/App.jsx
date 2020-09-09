@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from './Pages/Login';
-import Register from './Pages/Register';
-import Home from './Pages/Home';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './pages/home/home';
+import Login from './pages/login/login';
+import Register from './pages/register/register';
+
 const App = () => {
   return (
     <Router>
@@ -10,10 +11,10 @@ const App = () => {
         <Route path="/" exact>
           <Login />
         </Route>
-        <Route path="/Register">
+        <Route path="/register">
           <Register />
         </Route>
-        <Route path="/Home">
+        <Route path="/home">
           <Home />
         </Route>
       </Switch>
