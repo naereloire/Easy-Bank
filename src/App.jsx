@@ -1,17 +1,23 @@
 import React from 'react';
-
-function App() {
-  return (<div className="App">
-    <header className="App-header">
-      <p>
-        Edit < code > src / App.js </code> and save to reload. </p >
-      <
-        a className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer" >
-        Learn React </a> </header > </div>
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import Home from './Pages/Home';
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Login />
+        </Route>
+        <Route path="/Register">
+          <Register />
+        </Route>
+        <Route path="/Home">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
-}
-
+};
 export default App;
