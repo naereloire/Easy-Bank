@@ -1,22 +1,24 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Login from './pages/login/login';
 import Home from './pages/home/home';
+import Login from './pages/login/login';
+import Register from './pages/register/register';
 
 const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/"
-          exact >
+        <Route path="/" exact>
           <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
         </Route>
         <Route path="/home">
           <Home />
         </Route>
-      </Switch >
+      </Switch>
     </Router>
-  )
-}
-
+  );
+};
 export default App;
