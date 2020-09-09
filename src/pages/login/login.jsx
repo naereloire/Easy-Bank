@@ -12,7 +12,8 @@ const Login = (props) => {
         auth
             .signInWithEmailAndPassword(email, password)
             .then(() => {
-                console.log("Va para pagina home")
+                console.log("Foi direcionado para a página home")
+
             })
             .catch(function (error) {
                 console.log(error)
@@ -50,8 +51,8 @@ const Login = (props) => {
                     </fieldset>
                 </form>
                 <div >
-                    <p>
-                        <Link to='/register'>Registrar-se</Link>
+                    <p> Faça seu cadastro
+                        <Link to='/register'> clicando aqui</Link>
                     </p>
                 </div>
             </section>
