@@ -6,15 +6,8 @@ const obejeto = {
 };
 
 const Register = () => {
-  const [inputs, setInputs] = useState(obejeto);
-
-  return (
-    <div>
-      <form>
-        <input></input>
-      </form>
-    </div>
-  );
+  // return <div>{/* <Form>Registro</Form> */}</div>;
+  return <p>Registro</p>;
 };
 
 export default Register;
