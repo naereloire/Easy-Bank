@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Form from '../../components/Form.jsx';
 import { v4 as uid } from 'uuid';
-import { auth } from '../../config/firebase';
+import { firebase } from '../../config/fireconfig';
+import API from '../../api';
 
 const bodyRegister = (userInfos) => {
   const bodyObj = {
@@ -16,12 +17,12 @@ const bodyRegister = (userInfos) => {
       businessPhone: '1131859600',
       mobilePhone: '1131859600',
       address: {
-        street: userInfos['Endereço'],
-        number: userInfos['Numero'],
+        street: userInfos['Endereço'] ? userInfos['Endereço'] : 'não informado',
+        number: userInfos['Numero'] ? userInfos['Numero'] : 'não informado',
         district: 'Brasil',
-        city: userInfos['Cidade'],
-        state: userInfos['Estado'],
-        zipcode: userInfos['CEP'],
+        city: userInfos['Cidade'] ? userInfos['Cidade'] : 'não informado',
+        state: userInfos['Estado'] ? userInfos['Estado'] : 'SP',
+        zipcode: userInfos['CEP'] ? userInfos['CEP'] : '01001001',
       },
       identifierDocument: {
         document: userInfos['CPF'],
@@ -49,10 +50,22 @@ const Register = () => {
 
   const handleRegister = (event) => {
     event.preventDefault();
-    console.log(dadosUser);
-    auth()
-      .createUserWithEmailAndPassword(dadosUser['E-mail'], dadosUser['Senha'])
-      .then(() => {});
+    console.log(JSON.stringify(bodyRegister(dadosUser)));
+    API.post('accounts/child', bodyRegister(dadosUser)).then((response) => {
+      console.log('Key Acount ' + response.data.financialOperationKey);
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(dadosUser['E-mail'], dadosUser['Senha'])
+        .then((result) => {
+          result.user
+            .updateProfile({
+              photoURL: response.data.financialOperationKey,
+            })
+            .then(() => {
+              console.log(result.user);
+            });
+        });
+    });
   };
 
   return (
