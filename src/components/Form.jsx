@@ -8,8 +8,8 @@ const Form = ({ options, value, setValue }) => {
   }
   return (
     <div>
-      {options.map((option) => (
-        <label>
+      {options.map((option, i) => (
+        <label key={option}>
           {option}
           <input type="text" id={option} onBlur={handleRegister} />
         </label>
