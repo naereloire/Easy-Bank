@@ -41,7 +41,8 @@ const bodyRegister = (userInfos) => {
 
 const Register = () => {
   let history = useHistory();
-  const [dadosUser, setDadosUser] = useState({});
+  const [dadosUser, setDadosUser] = useState({}),
+    [error, setError] = useState('');
 
   const btnBack = (event) => {
     event.preventDefault();
@@ -51,21 +52,31 @@ const Register = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     console.log(JSON.stringify(bodyRegister(dadosUser)));
-    API.post('accounts/child', bodyRegister(dadosUser)).then((response) => {
-      console.log('Key Acount ' + response.data.financialOperationKey);
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(dadosUser['E-mail'], dadosUser['Senha'])
-        .then((result) => {
-          result.user
-            .updateProfile({
-              photoURL: response.data.financialOperationKey,
-            })
-            .then(() => {
-              console.log(result.user);
-            });
-        });
-    });
+    API.post('accounts/child', bodyRegister(dadosUser))
+      .then((response) => {
+        console.log('Key Acount ' + response.data.financialOperationKey);
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(
+            dadosUser['E-mail'],
+            dadosUser['Senha'],
+          )
+          .then((result) => {
+            result.user
+              .updateProfile({
+                photoURL: response.data.financialOperationKey,
+              })
+              .then(() => {
+                history.push('/home');
+              });
+          })
+          .catch((error) => {
+            setError(error.message);
+          });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   return (
@@ -94,6 +105,7 @@ const Register = () => {
       <button type="" onClick={btnBack}>
         VOLTAR
       </button>
+      <p>{error}</p>
     </form>
   );
 };
