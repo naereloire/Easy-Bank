@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Form from '../../components/Form.js';
 import { v4 as uid } from 'uuid';
 
@@ -36,9 +37,15 @@ const bodyRegister = (userInfos) => {
 };
 
 const Register = () => {
+  let history = useHistory();
   const [dadosUser, setDadosUser] = useState({});
 
-  const handleClick = (event) => {
+  const btnBack = (event) => {
+    event.preventDefault();
+    history.push('/');
+  };
+
+  const handleRegister = (event) => {
     event.preventDefault();
     console.log(dadosUser);
   };
@@ -62,10 +69,10 @@ const Register = () => {
         value={dadosUser}
         setValue={setDadosUser}
       />
-      <button type="submit" onClick={handleClick}>
+      <button type="submit" onClick={handleRegister}>
         ENVIAR
       </button>
-      <button type="" onClick={handleClick}>
+      <button type="" onClick={btnBack}>
         VOLTAR
       </button>
     </form>
