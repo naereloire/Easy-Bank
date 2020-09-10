@@ -11,7 +11,11 @@ const Form = ({ options, value, setValue }) => {
       {options.map((option, i) => (
         <label key={option}>
           {option}
-          <input type="text" id={option} onBlur={handleRegister} />
+          <input
+            type={option === 'Senha' ? 'password' : 'text'}
+            id={option}
+            onBlur={handleRegister}
+          />
         </label>
       ))}
     </div>

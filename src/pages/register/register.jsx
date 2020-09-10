@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Form from '../../components/Form.js';
+import Form from '../../components/Form.jsx';
 import { v4 as uid } from 'uuid';
+import { auth } from '../../config/firebase';
 
 const bodyRegister = (userInfos) => {
   const bodyObj = {
@@ -17,7 +18,7 @@ const bodyRegister = (userInfos) => {
       address: {
         street: userInfos['Endereço'],
         number: userInfos['Numero'],
-        district: 'Winterfell',
+        district: 'Brasil',
         city: userInfos['Cidade'],
         state: userInfos['Estado'],
         zipcode: userInfos['CEP'],
@@ -34,6 +35,7 @@ const bodyRegister = (userInfos) => {
       ],
     },
   };
+  return bodyObj;
 };
 
 const Register = () => {
@@ -48,6 +50,9 @@ const Register = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     console.log(dadosUser);
+    auth()
+      .createUserWithEmailAndPassword(dadosUser['E-mail'], dadosUser['Senha'])
+      .then(() => {});
   };
 
   return (
@@ -58,6 +63,7 @@ const Register = () => {
         options={[
           'Nome',
           'E-mail',
+          'Senha',
           'CPF',
           'Telefone',
           'Endereço',
