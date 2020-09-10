@@ -60,9 +60,6 @@ const Login = (props) => {
                     <p>
                         <Link to='/register'> CADASTRAR-SE </Link>
                     </p>
-                    <p>
-                        <Link to='/register'> Esqueci a senha </Link>
-                    </p>
                 </div>
                 <div>
                     {errorMsg ? (

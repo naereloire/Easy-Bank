@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Button = (props) => {
+const ButtonCard = (props) => {
     const { handleCLick, value, name } = props;
+
     return (
         <button onClick={handleCLick} value={value}>
             {name}
@@ -9,5 +10,5 @@ const Button = (props) => {
     );
 }
 
-export default Button;
+export default ButtonCard;
 
