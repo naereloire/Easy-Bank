@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line
 import { db, auth } from '../../config/fireconfig'
 import { Link } from 'react-router-dom';
 import Input from '../../components/Input';
