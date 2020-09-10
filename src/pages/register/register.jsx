@@ -1,89 +1,81 @@
-import React from 'react';
-import API from '../../api.js';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Form from '../../components/Form.jsx';
+import { v4 as uid } from 'uuid';
 
-const ObjetoTest = {
-  idempotencyKey: '1a6b0c3c-1a98-4ddc-8f10-5dad741a7ef3',
-  properties: 'sdfwerhrebgh',
-  owner: {
-    type: 'PJ',
-    name: 'Jon Snow Corporative ',
-    companyName: 'TT',
-    email: 'jon@ppi.com.br',
-    homePhone: '1131859600',
-    businessPhone: '1131859600',
-    mobilePhone: '1131859600',
-    address: {
-      street: 'Winterfell',
-      number: '529',
-      district: 'Winterfell',
-      city: 'Westeros',
-      state: 'SP',
-      zipcode: '06460080',
-    },
-    identifierDocument: {
-      document: '00270965000102',
-      type: 'CNPJ',
-    },
-    documents: [
-      {
-        type: 'CNPJ',
-        document: '00270965000102',
+const bodyRegister = (userInfos) => {
+  const bodyObj = {
+    idempotencyKey: uid(),
+    owner: {
+      type: 'PF',
+      name: userInfos['Nome'],
+      companyName: 'Mirart',
+      email: userInfos['E-mail'],
+      homePhone: userInfos['Telefone'],
+      businessPhone: '1131859600',
+      mobilePhone: '1131859600',
+      address: {
+        street: userInfos['Endereço'],
+        number: userInfos['Numero'],
+        district: 'Winterfell',
+        city: userInfos['Cidade'],
+        state: userInfos['Estado'],
+        zipcode: userInfos['CEP'],
       },
-    ],
-  },
-  responsible: {
-    type: 'PF',
-    name: 'Jon Snow',
-    companyName: 'TT',
-    email: 'jon@ppi.com.br',
-    homePhone: '1131859600',
-    businessPhone: '1131859600',
-    mobilePhone: '1131859600',
-    address: {
-      street: 'Winterfell',
-      number: '529',
-      district: 'Winterfell',
-      city: 'Westeros',
-      state: 'SP',
-      zipcode: '06460080',
-    },
-    identifierDocument: {
-      document: '76227631019',
-      type: 'CPF',
-    },
-    documents: [
-      {
+      identifierDocument: {
+        document: userInfos['CPF'],
         type: 'CPF',
-        document: '76227631019',
       },
-    ],
-  },
+      documents: [
+        {
+          type: 'CPF',
+          document: userInfos['CPF'],
+        },
+      ],
+    },
+  };
 };
 
 const Register = () => {
-  const handleClick = () => {
-    API.post(`/accounts/child`, ObjetoTest).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+  let history = useHistory();
+  const [dadosUser, setDadosUser] = useState({});
+
+  const btnBack = (event) => {
+    event.preventDefault();
+    history.push('/');
   };
 
-  const handleGet = () => {
-    API.get(`accounts/200001365`).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+  const handleRegister = (event) => {
+    event.preventDefault();
+    console.log(dadosUser);
   };
 
   return (
-    <div>
-      <button type="text" onClick={handleClick}>
-        POST
+    <form>
+      <h2>CADASTRO</h2>
+
+      <Form
+        options={[
+          'Nome',
+          'E-mail',
+          'CPF',
+          'Telefone',
+          'Endereço',
+          'Numero',
+          'Cidade',
+          'Estado',
+          'CEP',
+        ]}
+        value={dadosUser}
+        setValue={setDadosUser}
+      />
+      <button type="submit" onClick={handleRegister}>
+        ENVIAR
       </button>
-      <button type="text" onClick={handleGet}>
-        GET
+      <button type="" onClick={btnBack}>
+        VOLTAR
       </button>
-    </div>
+    </form>
   );
 };
 
