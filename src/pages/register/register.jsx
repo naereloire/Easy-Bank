@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Form from '../../Components/Form.js';
+import Form from '../../components/Form.js';
 
 const Register = () => {
   const [dadosUser, setDadosUser] = useState({});
