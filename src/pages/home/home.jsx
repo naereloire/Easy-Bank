@@ -5,6 +5,12 @@ import Button from '../../components/buttonCard/Button-card';
 import Header from '../../components/header/Header.jsx';
 import imgCard from '../../images/card.png';
 import imgWallet from '../../images/wallet.png';
+import updatearrow from '../../images/arrows.png';
+import {
+  StyledNavImg,
+  DivCenter,
+  DivEnd,
+} from '../../components/styledComponents/styledComponents';
 
 const Home = () => {
   const [name, setName] = useState(''),
@@ -32,18 +38,20 @@ const Home = () => {
   return (
     <>
       <Header name={name} account={numbAccount} />
-      <div>
+
+      <DivCenter>
+        <DivEnd>
+          <StyledNavImg
+            width="20px"
+            src={updatearrow}
+            onClick={() => {
+              getBalance(numbAccount);
+            }}
+          />
+        </DivEnd>
         <span>Saldo disponível</span>
-        <span>R$</span>
-        <span>{balance}</span>
-        <button
-          onClick={() => {
-            getBalance(numbAccount);
-          }}
-        >
-          Atualizar
-        </button>
-      </div>
+        <span>R${balance}</span>
+      </DivCenter>
       <Button
         subtitle="Solicitar cartão"
         img={imgCard}

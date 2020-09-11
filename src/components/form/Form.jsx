@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleDiv, StyleInput } from '../styledComponents/styledComponents';
 
 const Form = ({ options, value, setValue }) => {
   const requireInfos = ['Nome', 'E-mail', 'Senha', 'CPF'];
@@ -9,11 +10,11 @@ const Form = ({ options, value, setValue }) => {
     });
   }
   return (
-    <div>
+    <StyleDiv>
       {options.map((option, i) => (
         <label key={option}>
           {option}
-          <input
+          <StyleInput
             require={requireInfos.includes(option)}
             type={option === 'Senha' ? 'password' : 'text'}
             id={option}
@@ -23,7 +24,7 @@ const Form = ({ options, value, setValue }) => {
           <br />
         </label>
       ))}
-    </div>
+    </StyleDiv>
   );
 };
 
