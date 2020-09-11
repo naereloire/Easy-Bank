@@ -187,3 +187,9 @@ export const DivRow = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const StyleCardBt = styled.button`
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 5px;
+`;
