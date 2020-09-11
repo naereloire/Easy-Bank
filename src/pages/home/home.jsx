@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../api';
-import { firebase } from '../../config/fireconfig.js'
+import { firebase } from '../../config/fireconfig.js';
 import Button from '../../components/buttonCard/Button-card';
 import Header from '../../components/header/Header.jsx';
 import imgCard from '../../images/card.png';
 import imgWallet from '../../images/wallet.png';
 
 const Home = () => {
-
   const [name, setName] = useState(''),
     [numbAccount, setNumbAccount] = useState(''),
     [balance, setBalance] = useState(0);
@@ -32,9 +31,7 @@ const Home = () => {
 
   return (
     <>
-      <Header
-        name={name}
-        account={numbAccount} />
+      <Header name={name} account={numbAccount} />
       <div>
         <span>Saldo disponível</span>
         <span>R$</span>
@@ -45,20 +42,20 @@ const Home = () => {
           }}
         >
           Atualizar
-    </button>
+        </button>
       </div>
       <Button
         subtitle="Solicitar cartão"
         img={imgCard}
-      // handleCLick={cardRequest()}
+      // handleCLick={}
       />
       <Button
         subtitle="Controle suas finanças"
         img={imgWallet}
+      // handleCLick={}
       />
     </>
+  );
+};
 
-  )
-}
-
-export default Home
+export default Home;
