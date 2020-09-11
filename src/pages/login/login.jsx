@@ -39,6 +39,9 @@ const Login = (props) => {
   return (
     <main>
       <StyleDiv>
+        <styled className="image">
+          
+        </styled>
         <form>
           <fieldset>
             <StyleInput

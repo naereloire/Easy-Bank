@@ -45,16 +45,26 @@ width: 100%;
 touch-action: auto;
 }
 body {
-background-color: #D7D7D7;
-height: 100%;
+background-color: #00227A;
 width: 100%;
+height: 100%;
 margin: 0px;
+line-height: 1.5;
 }
 
 main {
 height: 100vh;
 }
 `;
+
+const imageLogo = styled.img`
+  width: ${props => props.width};
+  height: ${props => props.height};
+`
+imageLogo.defaultProps = {
+  width: '100%',
+  height: 'auto'
+}
 
 const borderAndRadius = `
   border: 1px solid #A04835;
@@ -73,7 +83,7 @@ const displayFlexAndRow = `
 
 const fontSizeAndFamily = `
   font-size: 30px;
-  font-family: "helvetica";
+  font-family: "Roboto", sans-serif, arial, Helvetica;
 
   @media(max-width: 400px) {
     font-size: 20px;
@@ -178,7 +188,7 @@ export const TextDiv = styled.span`
   color: ${(props) => (props.color ? props.color : '50px')};
   font-size: 1.5em;
   margin-left: 0.5em;
-  margin-rigth: 0.5em;
+
 `;
 
 export const DivRow = styled.div`
@@ -187,7 +197,6 @@ export const DivRow = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
 export const StyleCardBt = styled.button`
   background-color: #ffffff;
   border-radius: 10px;
