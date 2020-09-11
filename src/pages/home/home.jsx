@@ -9,11 +9,17 @@ import imgtransfer from '../../images/transfer.png';
 
 import updatearrow from '../../images/arrows.png';
 import Modal from '../../components/modal/modal.jsx';
+
 import {
   StyledNavImg,
-  DivCenter,
   DivEnd,
   StyleInput,
+  DivPing,
+  DivMain,
+  TextDiv,
+  DivRow,
+  DivButtons,
+  DivCenter,
 } from '../../components/styledComponents/styledComponents';
 import { v4 as uid } from 'uuid';
 
@@ -89,38 +95,41 @@ const Home = () => {
   return (
     <>
       <Header name={name} account={numbAccount} />
+      <DivPing />
 
       <Modal show={show} id="loading">
         <p> Carregando . . . </p>
       </Modal>
 
       <Modal show={showTransfer} id="form-transfer">
-        <StyleInput
-          onBlur={(event) => {
-            setTransferCPF(event.target.value);
-          }}
-          placeholder="cpf"
-          type="text"
-        ></StyleInput>
-        <StyleInput
-          onBlur={(event) => {
-            setTransferValue(event.target.value);
-          }}
-          placeholder="valor"
-          type="number"
-        ></StyleInput>
-        <button onClick={TransferAccount}>Enviar</button>
-        <button
-          onClick={() => {
-            setshowTransfer(false);
-          }}
-        >
-          Cancelar
-        </button>
-        <span>{errorTransf}</span>
+        <DivCenter>
+          <StyleInput
+            onBlur={(event) => {
+              setTransferCPF(event.target.value);
+            }}
+            placeholder="cpf"
+            type="text"
+          ></StyleInput>
+          <StyleInput
+            onBlur={(event) => {
+              setTransferValue(event.target.value);
+            }}
+            placeholder="valor"
+            type="number"
+          ></StyleInput>
+          <button onClick={TransferAccount}>Enviar</button>
+          <button
+            onClick={() => {
+              setshowTransfer(false);
+            }}
+          >
+            Cancelar
+          </button>
+          <span>{errorTransf}</span>
+        </DivCenter>
       </Modal>
 
-      <DivCenter>
+      <DivMain>
         <DivEnd>
           <StyledNavImg
             width="20px"
@@ -130,26 +139,31 @@ const Home = () => {
             }}
           />
         </DivEnd>
-        <span>Saldo disponível</span>
-        <span>R${balance}</span>
-      </DivCenter>
-      <Button
-        subtitle="Solicitar cartão"
-        img={imgCard}
-        // handleCLick={}
-      />
-      <Button
-        subtitle="Controle suas finanças"
-        img={imgWallet}
-        // handleCLick={}
-      />
-      <Button
-        subtitle="Transferencia entre Contas"
-        img={imgtransfer}
-        handleCLick={() => {
-          setshowTransfer(true);
-        }}
-      />
+        <TextDiv color="#8b8b8b">Saldo disponível</TextDiv>
+        <DivRow>
+          <TextDiv color="#ff5691">R$ </TextDiv>
+          <TextDiv color="#24007c"> {balance}</TextDiv>
+        </DivRow>
+      </DivMain>
+      <DivButtons>
+        <Button
+          subtitle="Solicitar cartão"
+          img={imgCard}
+          // handleCLick={}
+        />
+        <Button
+          subtitle="Controle suas finanças"
+          img={imgWallet}
+          // handleCLick={}
+        />
+        <Button
+          subtitle="Transferencia entre Contas"
+          img={imgtransfer}
+          handleCLick={() => {
+            setshowTransfer(true);
+          }}
+        />
+      </DivButtons>
     </>
   );
 };
