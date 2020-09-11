@@ -132,3 +132,58 @@ export const StyledSpan = styled.span`
   ${fontSizeAndFamily}
   ${displayFlexAndRow}
 `;
+
+export const ModalDiv = styled.div`
+  display: ${(props) => (props.show ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+`;
+export const SecModal = styled.section`
+  position: fixed;
+  background: white;
+  width: 80%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const DivButtons = styled.div`
+  display: flex;
+`;
+
+export const DivMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding-bottom: 10%;
+  padding-top: 10%;
+  margin-top: 10%;
+  margin-bottom: 20%;
+`;
+
+export const DivPing = styled.div`
+  width: 100%;
+  height: 10px;
+  background-color: #ff5691;
+`;
+
+export const TextDiv = styled.span`
+  color: ${(props) => (props.color ? props.color : '50px')};
+  font-size: 1.5em;
+  margin-left: 0.5em;
+  margin-rigth: 0.5em;
+`;
+
+export const DivRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
