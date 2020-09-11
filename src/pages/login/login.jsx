@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line
 import { db, auth } from '../../config/fireconfig'
 import authMainErrors from './firebase-error'
 import { Link, withRouter } from 'react-router-dom';
