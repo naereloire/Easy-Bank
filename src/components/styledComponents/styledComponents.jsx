@@ -58,13 +58,13 @@ height: 100vh;
 `;
 
 const imageLogo = styled.img`
-  width: ${props => props.width};
-  height: ${props => props.height};
-`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+`;
 imageLogo.defaultProps = {
   width: '100%',
-  height: 'auto'
-}
+  height: 'auto',
+};
 
 const borderAndRadius = `
   border: 1px solid #A04835;
@@ -105,8 +105,8 @@ export const StyleInput = styled.input`
   border: none;
   ${displayFlexAndColumn}
   &::placeholder {
-    color: #67686B;
-    padding-left: 15px
+    color: #67686b;
+    padding-left: 15px;
   }
 
   @media (max-width: 400px) {
@@ -114,8 +114,6 @@ export const StyleInput = styled.input`
     width: 85%;
   }
 `;
-
-
 
 export const StyleDiv = styled.div`
   ${displayFlexAndColumn}
@@ -126,37 +124,36 @@ export const StyleDiv = styled.div`
 `;
 
 export const BtnSize = styled.button`
-width: 300px;
-height: 35px;
-background-color: #FC4A75; 
-border: none;
-border-radius: 5px;
+  width: 300px;
+  height: 35px;
+  background-color: #fc4a75;
+  border: none;
+  border-radius: 5px;
 `;
 
 export const Btn = styled.button`
-width: 70px;
-height: 35px;
-background-color: #FC4A75; 
-border: none;
-border-radius: 5px;
+  width: 70px;
+  height: 35px;
+  background-color: #fc4a75;
+  border: none;
+  border-radius: 5px;
 `;
 
-
 export const BtnSection = styled.section`
-display: flex;
-display: block;
-justify-content: center;
-width: 100%;
+  display: flex;
+  display: block;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const StyleBtn = styled.button`
   ${borderAndRadius}
   ${displayFlexAndColumn}
   height: 30px;
-  width: 20%;
+  width: 90%;
   margin: 5px;
-  background-color: #a04835;
-  color: black;
+  background-color: #ff5691;
+  color: white;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
@@ -179,7 +176,6 @@ export const ModalDiv = styled.div`
   background: rgba(0, 0, 0, 0.6);
 `;
 
-
 export const SecModal = styled.section`
   position: fixed;
   background: white;
@@ -191,21 +187,19 @@ export const SecModal = styled.section`
 `;
 
 export const RegisterPage = styled.main`
-background-color: #00227A;
-height: 100%;
-display: flex;
-justify-content: center;
-flex-direction: column;
-
+  background-color: #00227a;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export const Title = styled.section`
-color: #FFFFFF;
-display: flex; 
-margin-top: 20px;
-justify-content: center;
-
-` ;
+  color: #ffffff;
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+`;
 
 export const DivButtons = styled.div`
   display: flex;
@@ -233,7 +227,6 @@ export const TextDiv = styled.span`
   color: ${(props) => (props.color ? props.color : '50px')};
   font-size: 1.5em;
   margin-left: 0.5em;
-
 `;
 
 export const DivRow = styled.div`

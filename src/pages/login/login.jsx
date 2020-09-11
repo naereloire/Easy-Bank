@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { db, auth } from '../../config/fireconfig';
 import authMainErrors from './firebase-error';
 import { Link, withRouter } from 'react-router-dom';
-//import Input from '../../components/input/Input';
+import Logo from '../../images/logo-mirart.png';
 import Button from '../../components/button/Button';
 import {
   StyleDiv,
   StyleInput,
+  StyledNavImg,
+  DivCenter,
 } from '../../components/styledComponents/styledComponents';
 
 const Login = (props) => {
@@ -38,12 +40,11 @@ const Login = (props) => {
 
   return (
     <main>
-      <StyleDiv>
-        <styled className="image">
-          
-        </styled>
+      <DivCenter>
+        <StyledNavImg src={Logo} width="150px" />
+        <styled className="image"></styled>
         <form>
-          <fieldset>
+          <DivCenter>
             <StyleInput
               type="email"
               value={email}
@@ -57,15 +58,22 @@ const Login = (props) => {
               onChange={(event) => setPassword(event.target.value)}
             />
             <Button name="Entrar" handleCLick={(e) => sendFormToAuth(e)} />
-          </fieldset>
+          </DivCenter>
         </form>
         <div>
           <p>
-            <Link to="/register"> CADASTRAR-SE </Link>
+            <Link
+              to="/register"
+              style={{ color: 'white', margin: '20px' }}
+              activeStyle={{ color: 'red' }}
+            >
+              {' '}
+              CADASTRAR-SE{' '}
+            </Link>
           </p>
         </div>
         <div>{errorMsg ? <div>{errorMsg}</div> : null}</div>
-      </StyleDiv>
+      </DivCenter>
     </main>
   );
 };

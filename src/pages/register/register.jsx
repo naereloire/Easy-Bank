@@ -4,7 +4,14 @@ import Form from '../../components/form/Form.jsx';
 import { v4 as uid } from 'uuid';
 import { firebase } from '../../config/fireconfig';
 import API from '../../api';
-import { RegisterPage, Title, BtnSize, Btn, BtnSection } from '../../components/styledComponents/styledComponents';
+import {
+  RegisterPage,
+  Title,
+  Btn,
+  BtnSection,
+  DivCenter,
+} from '../../components/styledComponents/styledComponents';
+import Button from '../../components/button/Button.jsx';
 
 const bodyRegister = (userInfos) => {
   const bodyObj = {
@@ -103,32 +110,30 @@ const Register = () => {
       <Title>
         <h2>CADASTRO</h2>
       </Title>
-      <Form
-        options={[
-          'Nome',
-          'E-mail',
-          'Senha',
-          'CPF',
-          'Telefone',
-          'Endereço',
-          'Numero',
-          'Cidade',
-          'Estado',
-          'CEP',
-        ]}
-        value={dadosUser}
-        setValue={setDadosUser}
-      />
-      <BtnSection>
-        <BtnSize type="submit" onClick={handleRegister}>
-          ENVIAR
-      </BtnSize>
-        <Btn type="" onClick={btnBack}>
-          VOLTAR
-      </Btn>
-      </BtnSection>
+      <DivCenter>
+        <Form
+          options={[
+            'Nome',
+            'E-mail',
+            'Senha',
+            'CPF',
+            'Telefone',
+            'Endereço',
+            'Numero',
+            'Cidade',
+            'Estado',
+            'CEP',
+          ]}
+          value={dadosUser}
+          setValue={setDadosUser}
+        />
+        <BtnSection>
+          <Button type="submit" name="ENVIAR" onClick={handleRegister}></Button>
+          <Button type="" name=" VOLTAR" onClick={btnBack}></Button>
+        </BtnSection>
 
-      <p>{error}</p>
+        <p>{error}</p>
+      </DivCenter>
     </RegisterPage>
   );
 };
