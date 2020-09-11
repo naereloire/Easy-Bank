@@ -1,68 +1,108 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Mirart - Desafio Hub Fintech
 
-## Available Scripts
 
-In the project directory, you can run:
+- [1. Introdução](#1-introdução)
+- [2. Conheça nossa Aplicação](#2-Conheça-nossa-aplicação)
+- [3. Definição de Produto](#3-definição-de-produto-e-histórias-de-usuários)
+- [4. Implementações Futuras Checklist](#4-implementações-futuras-checklist)
+- [5. Instalação do projeto](#5-instalação-do-projeto)
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 1. Introdução
+Este projeto foi desenvolvido por [Francieli Abreu](https://github.com/francielisabreu),[Karina Vitangelo](https://github.com/karinavit), [Luana Arêdes Costa](https://github.com/luana-aredes) e [Naere Loire](https://github.com/naereloire) alunas da 4a Geração da [Laboratoria](https://github.com/Laboratoria) (SAP004), para o [Talent Fest](https://talentfest.laboratoria.la).
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Desafio
+Nosso desafio foi proposto pela empresa [Hub Fintech](https://www.hubfintech.com.br/), com o tema livre, nos foi proposto desenvolver uma aplicação Web ou Apps de conta digital utilizando alguns dos serviços providos por API pela Hub Fintech.
 
-### `npm test`
+### Solução
+Desenvolvemos nossa solução visando trazer educação financeira e inclusão digital por meio de serviços bancários a mulheres artesãs da região nordeste do Brasil.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Planejamento
+Com base na Metodologia Ágil, foi criado um quadro no [Trello](https://trello.com/), onde definimos e dividimos as tarefas utilizando Kanban, dessa forma assim conseguíamos acompanhar, revisar e ajustar de forma rápida.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Nosso Quadro
+Vamos colocar foto do quadro?
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 2. Conheça nossa Aplicação
+Acesse nossa aplicação neste [link]()
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Inserir imagem da Aplicação
 
-### `npm run eject`
+**Login de Teste:**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+e-mail: xxxxx 
+senha: 123456
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 3. Protótipo
+Desenvolvemos um protótipo de baixa fidelidade no [Figma](https://www.figma.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Logo
+![2logo-mirart](https://user-images.githubusercontent.com/61189470/92866835-5a320580-f3d6-11ea-8d02-cde043c54c88.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Tela de Login e Cadastro
+![3tela-login-registro](https://user-images.githubusercontent.com/61189470/92866838-5aca9c00-f3d6-11ea-8084-ca60b34a7f32.jpeg)
 
-## Learn More
+### Tela de Home
+![4tela-home](https://user-images.githubusercontent.com/61189470/92866840-5b633280-f3d6-11ea-8840-a56e8dfa2f6f.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+A aplicação foi desenvolvida utilizando [React](https://pt-br.reactjs.org/), [JavaScript, HTML5 e CSS3](https://developer.mozilla.org/pt-BR/docs/Aprender/JavaScript). Hospedamos a mesma juntamente com seu de dados no [Firebase](https://firebase.google.com/?hl=pt). Com foco na usabilidade em tablets e web. 
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## 3. Definição de Produto
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## 4. Implementações Futuras Checklist
+Pensando em melhorias para o nossa aplicação, abaixo listamos as atividades para implementação futura:
 
-### Advanced Configuration
+- [ ] 
+- [ ] 
+- [ ] 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
+## 5. Instalação do projeto
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Caso deseje baixar o projeto para sua máquina é possível criar um fork do nosso repositório e depois disso, você deve realizar um "clone" ou "donwload" do **link fornecido pelo seu repositório** para então digitar em seu terminal:
 
-### `npm run build` fails to minify
+  `git clone <cole seu link após isso>`
+  
+O repositório será completamente baixado em sua máquina, e caso use o Visual Studio Code, basta entrar na pasta pelo terminal e digitar:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+  `code .`
+
+Caso não possua o Node.js instalado, basta clicar nesse link [aqui](https://nodejs.org/pt-br/download/) e fazer o download, pois, para executar ele em seu computador, será necessário realizar a instalação da pasta node modules, com o uso do NPM (nativo do Node.js).
+
+Assim que a instalação tiver sido concluída, basta digitar em seu terminal:
+
+`npm install` 
+
+E aguardar até que o processo tenha sido completo.
+
+É importante ressaltar que também utilizamos o [React](https://pt-br.reactjs.org/) e o [React-Router-Dom](https://reactrouter.com/web/guides/quick-start). 
+
+### Antes de instalar o Firebase, certifique-se de criar uma conta e abrir um projeto novo ( visto que você não terá acesso ao nosso banco de dados):
+
+Lembre-se de instalar o Firebase, utilizando o comando (este comando irá instalar o Firebase globalmente em sua máquina):
+
+`npm install -g firebase-tools`
+
+Faça login no Google. Execute este comando: (Esse comando conecta sua máquina local ao Firebase e concede acesso aos seus projetos.)
+
+`firebase login`
+
+Inicialize seu projeto utilizando o comando:
+
+  `firebase init`
+
+Para abrir um servidor a fim de executar o projeto em seu navegador, é só digitar:
+  
+  `firebase serve`
+
+Basta clicar no link (localhost) que será disponibilizado em seu terminal. 
+
+Após manipular o projeto e então realizar um deploy, utilize o seguinte comando:
+
+`firebase deploy`
