@@ -21,6 +21,7 @@ const Home = () => {
         console.log(error);
       });
   };
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       user ? setName(user.displayName) : setName();
@@ -49,12 +50,11 @@ const Home = () => {
       <Button
         subtitle="Solicitar cartão"
         img={imgCard}
-      // handleCLick={}
+      // handleCLick={cardRequest()}
       />
       <Button
         subtitle="Controle suas finanças"
         img={imgWallet}
-      // handleCLick={}
       />
     </>
 
