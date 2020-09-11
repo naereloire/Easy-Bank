@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleBtn, StyledNavImg } from '../styledComponents/styledComponents';
+import { StyledNavImg } from '../styledComponents/styledComponents';
 
 const ButtonCard = (props) => {
   const { handleCLick, value, subtitle, img } = props;
