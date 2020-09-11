@@ -161,7 +161,7 @@ const Home = () => {
         <TextDiv color="#8b8b8b">Saldo disponível</TextDiv>
         <DivRow>
           <TextDiv color="#ff5691">R$ </TextDiv>
-          <TextDiv color="#24007c"> {balance}</TextDiv>
+          <TextDiv color="#24007c"> {balance},00</TextDiv>
         </DivRow>
       </DivMain>
       <DivButtons>
@@ -175,7 +175,7 @@ const Home = () => {
         <Button
           subtitle="Controle suas finanças"
           img={imgWallet}
-          // handleCLick={}
+        // handleCLick={}
         />
         <Button
           subtitle="Transferencia entre Contas"
