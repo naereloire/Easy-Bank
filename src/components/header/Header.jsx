@@ -1,21 +1,23 @@
 import React from 'react';
 import Logotype from '../../images/logo-mirart.png';
 import SignOut from '../signOut/SignOut';
+import {
+  Navtop,
+  StyledNavImg,
+  DivCenter,
+} from '../styledComponents/styledComponents';
 
 const Header = (props) => {
   return (
-    <header>
-      <nav>
-        <figure>
-          <img src={Logotype} alt="Logotipo" />
-        </figure>
-        <section>
-          <h3>Olá {props.name}</h3>
-          <span>Conta:{props.account}</span>
-        </section>
-        <SignOut />
-      </nav>
-    </header>
+    <Navtop>
+      <StyledNavImg src={Logotype} alt="Logotipo" width="70px" />
+      <DivCenter>
+        <span>OLÁ {props.name ? props.name.toUpperCase() : ''}</span>
+        <span>CONTA </span>
+        <span>{props.account}</span>
+      </DivCenter>
+      <SignOut />
+    </Navtop>
   );
 };
 export default Header;
