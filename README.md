@@ -4,8 +4,7 @@
 - [1. Introdução](#1-introdução)
 - [2. Conheça nossa Aplicação](#2-Conheça-nossa-aplicação)
 - [3. Protótipo](#3-protótipo)
-- [4. Implementações Futuras Checklist](#4-implementações-futuras-checklist)
-- [5. Instalação do projeto](#5-instalação-do-projeto)
+- [4. Implementações Futuras](#4-implementações-futuras)
 
 
 ## 1. Introdução
@@ -45,15 +44,7 @@ Desenvolvemos um protótipo de baixa fidelidade no [Figma](https://www.figma.com
 
 A aplicação foi desenvolvida utilizando [React](https://pt-br.reactjs.org/), [JavaScript, HTML5 e CSS3](https://developer.mozilla.org/pt-BR/docs/Aprender/JavaScript). Hospedamos a mesma juntamente com seu de dados no [Firebase](https://firebase.google.com/?hl=pt). Com foco na usabilidade em tablets e web. 
 
-## 4. Implementações Futuras Checklist
-Pensando em melhorias para o nossa aplicação, abaixo listamos as atividades para implementação futura:
-
-- [ ] 
-- [ ] 
-- [ ] 
-
-
-## 5. Instalação do projeto
+## 4. Instalação do projeto
 
 Caso deseje baixar o projeto para sua máquina é possível criar um fork do nosso repositório e depois disso, você deve realizar um "clone" ou "donwload" do **link fornecido pelo seu repositório** para então digitar em seu terminal:
 
