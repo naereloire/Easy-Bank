@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Form from '../../components/Form.jsx';
+import Form from '../../components/form/Form.jsx';
 import { v4 as uid } from 'uuid';
-
+import { firebase } from '../../config/fireconfig';
+import API from '../../api';
 const bodyRegister = (userInfos) => {
   const bodyObj = {
     idempotencyKey: uid(),
@@ -15,12 +16,12 @@ const bodyRegister = (userInfos) => {
       businessPhone: '1131859600',
       mobilePhone: '1131859600',
       address: {
-        street: userInfos['Endereço'],
-        number: userInfos['Numero'],
-        district: 'Winterfell',
-        city: userInfos['Cidade'],
-        state: userInfos['Estado'],
-        zipcode: userInfos['CEP'],
+        street: userInfos['Endereço'] ? userInfos['Endereço'] : 'não informado',
+        number: userInfos['Numero'] ? userInfos['Numero'] : 'não informado',
+        district: 'Brasil',
+        city: userInfos['Cidade'] ? userInfos['Cidade'] : 'não informado',
+        state: userInfos['Estado'] ? userInfos['Estado'] : 'SP',
+        zipcode: userInfos['CEP'] ? userInfos['CEP'] : '01001001',
       },
       identifierDocument: {
         document: userInfos['CPF'],
@@ -34,30 +35,75 @@ const bodyRegister = (userInfos) => {
       ],
     },
   };
+  return bodyObj;
 };
-
+const startMoney = (numberAccount) => {
+  const initialBalance = 10;
+  API.get(`accounts/${numberAccount}`).then((response) => {
+    transferBtwAccounts(
+      response.data.parentFinancialOperationKey,
+      numberAccount,
+      initialBalance,
+    );
+  });
+};
+const transferBtwAccounts = (numbAccountOrigin, numbDestiny, quantityMoney) => {
+  API.post(`accounts/${numbAccountOrigin}/transfer`, {
+    amount: quantityMoney,
+    toFinancialOperationKey: numbDestiny,
+    transferCode: uid(),
+    summary: 'Tranferência entre Contas Mirart',
+    idempotencyKey: uid(),
+  }).catch((error) => {
+    console.log(error);
+  });
+};
 const Register = () => {
   let history = useHistory();
-  const [dadosUser, setDadosUser] = useState({});
-
+  const [dadosUser, setDadosUser] = useState({}),
+    [error, setError] = useState('');
   const btnBack = (event) => {
     event.preventDefault();
     history.push('/');
   };
-
   const handleRegister = (event) => {
     event.preventDefault();
-    console.log(dadosUser);
+    console.log(JSON.stringify(bodyRegister(dadosUser)));
+    API.post('accounts/child', bodyRegister(dadosUser))
+      .then((response) => {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(
+            dadosUser['E-mail'],
+            dadosUser['Senha'],
+          )
+          .then((result) => {
+            result.user
+              .updateProfile({
+                photoURL: response.data.financialOperationKey,
+                displayName: dadosUser['Nome'],
+              })
+              .then(() => {
+                startMoney(response.data.financialOperationKey);
+                history.push('/home');
+              });
+          })
+          .catch((error) => {
+            setError(error.message);
+          });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
-
   return (
     <form>
       <h2>CADASTRO</h2>
-
       <Form
         options={[
           'Nome',
           'E-mail',
+          'Senha',
           'CPF',
           'Telefone',
           'Endereço',
@@ -75,8 +121,8 @@ const Register = () => {
       <button type="" onClick={btnBack}>
         VOLTAR
       </button>
+      <p>{error}</p>
     </form>
   );
 };
-
 export default Register;

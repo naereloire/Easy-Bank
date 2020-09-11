@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { db, auth } from '../../config/fireconfig'
 import authMainErrors from './firebase-error'
 import { Link, withRouter } from 'react-router-dom';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import Input from '../../components/input/Input';
+import Button from '../../components/button/Button';
 
 const Login = (props) => {
     const [email, setEmail] = useState();

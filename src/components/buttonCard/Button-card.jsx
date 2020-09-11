@@ -1,14 +1,14 @@
 import React from 'react';
 
 const ButtonCard = (props) => {
-    const { handleCLick, value, name } = props;
+    const { handleCLick, value, subtitle, img } = props;
 
     return (
         <button onClick={handleCLick} value={value}>
-            {name}
+            <img src={img} alt="" />
+            <div>{subtitle}</div>
         </button>
     );
 }
-
 export default ButtonCard;
 
