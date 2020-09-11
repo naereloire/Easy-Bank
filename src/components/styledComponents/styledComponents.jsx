@@ -91,12 +91,12 @@ export const StyleInput = styled.input`
   margin: 10px;
   font-size: 20px;
   outline: none;
-  color: #a04835;
-  ${borderAndRadius}
+  color: #000000;
+  border: none;
   ${displayFlexAndColumn}
-
   &::placeholder {
-    color: #a04835;
+    color: #67686B;
+    padding-left: 15px
   }
 
   @media (max-width: 400px) {
@@ -105,12 +105,38 @@ export const StyleInput = styled.input`
   }
 `;
 
+
+
 export const StyleDiv = styled.div`
-  ${borderAndRadius}
   ${displayFlexAndColumn}
   width: 100%;
   /* align-items:center; */
   padding-top: 3rem;
+  border: none;
+`;
+
+export const BtnSize = styled.button`
+width: 300px;
+height: 35px;
+background-color: #FC4A75; 
+border: none;
+border-radius: 5px;
+`;
+
+export const Btn = styled.button`
+width: 70px;
+height: 35px;
+background-color: #FC4A75; 
+border: none;
+border-radius: 5px;
+`;
+
+
+export const BtnSection = styled.section`
+display: flex;
+display: block;
+justify-content: center;
+width: 100%;
 `;
 
 export const StyleBtn = styled.button`
@@ -142,6 +168,8 @@ export const ModalDiv = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 `;
+
+
 export const SecModal = styled.section`
   position: fixed;
   background: white;
@@ -151,6 +179,23 @@ export const SecModal = styled.section`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
+export const RegisterPage = styled.main`
+background-color: #00227A;
+height: 100%;
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+`;
+
+export const Title = styled.section`
+color: #FFFFFF;
+display: flex; 
+margin-top: 20px;
+justify-content: center;
+
+` ;
 
 export const DivButtons = styled.div`
   display: flex;
@@ -186,4 +231,10 @@ export const DivRow = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+`;
+
+export const StyleCardBt = styled.button`
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 5px;
 `;

@@ -6,7 +6,7 @@ import Header from '../../components/header/Header.jsx';
 import imgCard from '../../images/card.png';
 import imgWallet from '../../images/wallet.png';
 import imgtransfer from '../../images/transfer.png';
-
+import imgClose from '../../images/close.png';
 import updatearrow from '../../images/arrows.png';
 import Modal from '../../components/modal/modal.jsx';
 
@@ -20,6 +20,7 @@ import {
   DivRow,
   DivButtons,
   DivCenter,
+  StyleCardBt,
 } from '../../components/styledComponents/styledComponents';
 import { v4 as uid } from 'uuid';
 
@@ -31,6 +32,7 @@ const Home = () => {
     [transferCPF, setTransferCPF] = useState(''),
     [transferValue, setTransferValue] = useState(''),
     [errorTransf, setErrorTransf] = useState(''),
+    [showCard, setshowCard] = useState(false),
     [showTransfer, setshowTransfer] = useState(false);
 
   const getBalance = (numbAccount) => {
@@ -98,9 +100,24 @@ const Home = () => {
       <DivPing />
 
       <Modal show={show} id="loading">
-        <p> Carregando . . . </p>
+        <DivCenter>
+          <p> Carregando . . . </p>
+        </DivCenter>
       </Modal>
-
+      <Modal show={showCard} id="card">
+        <DivCenter>
+          <DivEnd>
+            <StyledNavImg
+              src={imgClose}
+              width="1.5em"
+              onClick={() => {
+                setshowCard(false);
+              }}
+            />
+          </DivEnd>
+          <p> Cartão Solicitado </p>
+        </DivCenter>
+      </Modal>
       <Modal show={showTransfer} id="form-transfer">
         <DivCenter>
           <StyleInput
@@ -117,15 +134,17 @@ const Home = () => {
             placeholder="valor"
             type="number"
           ></StyleInput>
-          <button onClick={TransferAccount}>Enviar</button>
-          <button
-            onClick={() => {
-              setshowTransfer(false);
-            }}
-          >
-            Cancelar
-          </button>
-          <span>{errorTransf}</span>
+          <DivButtons>
+            <StyleCardBt onClick={TransferAccount}>Enviar</StyleCardBt>
+            <StyleCardBt
+              onClick={() => {
+                setshowTransfer(false);
+              }}
+            >
+              Cancelar
+            </StyleCardBt>
+            <span>{errorTransf}</span>
+          </DivButtons>
         </DivCenter>
       </Modal>
 
@@ -142,14 +161,16 @@ const Home = () => {
         <TextDiv color="#8b8b8b">Saldo disponível</TextDiv>
         <DivRow>
           <TextDiv color="#ff5691">R$ </TextDiv>
-          <TextDiv color="#24007c"> {balance}</TextDiv>
+          <TextDiv color="#24007c"> {balance},00</TextDiv>
         </DivRow>
       </DivMain>
       <DivButtons>
         <Button
           subtitle="Solicitar cartão"
           img={imgCard}
-        // handleCLick={}
+          handleCLick={() => {
+            setshowCard(true);
+          }}
         />
         <Button
           subtitle="Controle suas finanças"
