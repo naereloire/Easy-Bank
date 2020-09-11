@@ -1,12 +1,16 @@
 import React from "react";
 import Popup from "reactjs-popup";
+import Header from '../../components/header/Header.jsx';
 import "./finance.css";
+import "../../components/styledComponents/styledComponents.jsx";
 
 const Finance = () => {
   return (
     <>
-      <h2>Concetudos de Educação Financeira</h2>
-      <Popup trigger={<button> 4 passos pra autônomos se organizarem e sobrar dinheiro </button>} position="right center">
+     <Header/>
+
+      <h2>Conteúdos de Educação Financeira</h2>
+      <Popup trigger={<button>4 passos pra autônomos se organizarem e sobrar dinheiro</button>} position="right center">
         <div className=".popup-content"> 
           <ul>
             <li>1. Ganhe um salário</li>

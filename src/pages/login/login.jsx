@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { db, auth } from '../../config/fireconfig';
 import authMainErrors from './firebase-error';
 import { Link, withRouter } from 'react-router-dom';
-import Input from '../../components/input/Input';
+//import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
 import {
   StyleDiv,
