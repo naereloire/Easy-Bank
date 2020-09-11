@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { db, auth } from '../../config/fireconfig'
 import authMainErrors from './firebase-error'
 import { Link, withRouter } from 'react-router-dom';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import Input from '../../components/input/Input';
+import Button from '../../components/button/Button';
 
 const Login = (props) => {
     const [email, setEmail] = useState();
@@ -60,9 +60,6 @@ const Login = (props) => {
                 <div >
                     <p>
                         <Link to='/register'> CADASTRAR-SE </Link>
-                    </p>
-                    <p>
-                        <Link to='/register'> Esqueci a senha </Link>
                     </p>
                 </div>
                 <div>

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Form from '../../components/Form.jsx';
+import Form from '../../components/form/Form.jsx';
 import { v4 as uid } from 'uuid';
 import { firebase } from '../../config/fireconfig';
 import API from '../../api';
-
 const bodyRegister = (userInfos) => {
   const bodyObj = {
     idempotencyKey: uid(),
@@ -38,23 +37,40 @@ const bodyRegister = (userInfos) => {
   };
   return bodyObj;
 };
-
+const startMoney = (numberAccount) => {
+  const initialBalance = 10;
+  API.get(`accounts/${numberAccount}`).then((response) => {
+    transferBtwAccounts(
+      response.data.parentFinancialOperationKey,
+      numberAccount,
+      initialBalance,
+    );
+  });
+};
+const transferBtwAccounts = (numbAccountOrigin, numbDestiny, quantityMoney) => {
+  API.post(`accounts/${numbAccountOrigin}/transfer`, {
+    amount: quantityMoney,
+    toFinancialOperationKey: numbDestiny,
+    transferCode: uid(),
+    summary: 'Tranferência entre Contas Mirart',
+    idempotencyKey: uid(),
+  }).catch((error) => {
+    console.log(error);
+  });
+};
 const Register = () => {
   let history = useHistory();
   const [dadosUser, setDadosUser] = useState({}),
     [error, setError] = useState('');
-
   const btnBack = (event) => {
     event.preventDefault();
     history.push('/');
   };
-
   const handleRegister = (event) => {
     event.preventDefault();
     console.log(JSON.stringify(bodyRegister(dadosUser)));
     API.post('accounts/child', bodyRegister(dadosUser))
       .then((response) => {
-        console.log('Key Acount ' + response.data.financialOperationKey);
         firebase
           .auth()
           .createUserWithEmailAndPassword(
@@ -65,8 +81,10 @@ const Register = () => {
             result.user
               .updateProfile({
                 photoURL: response.data.financialOperationKey,
+                displayName: dadosUser['Nome'],
               })
               .then(() => {
+                startMoney(response.data.financialOperationKey);
                 history.push('/home');
               });
           })
@@ -78,11 +96,9 @@ const Register = () => {
         setError(error.message);
       });
   };
-
   return (
     <form>
       <h2>CADASTRO</h2>
-
       <Form
         options={[
           'Nome',
@@ -109,5 +125,4 @@ const Register = () => {
     </form>
   );
 };
-
 export default Register;
