@@ -6,6 +6,7 @@ import Header from '../../components/header/Header.jsx';
 import imgCard from '../../images/card.png';
 import imgWallet from '../../images/wallet.png';
 import updatearrow from '../../images/arrows.png';
+import Modal from '../../components/modal/modal.jsx';
 import {
   StyledNavImg,
   DivCenter,
@@ -15,15 +16,19 @@ import {
 const Home = () => {
   const [name, setName] = useState(''),
     [numbAccount, setNumbAccount] = useState(''),
+    [show, setShow] = useState(false),
     [balance, setBalance] = useState(0);
 
   const getBalance = (numbAccount) => {
+    setShow(true);
     API.get(`accounts/${numbAccount}/balance`)
       .then((response) => {
         setBalance(response.data.balance);
+        setShow(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
+        setShow(false);
       });
   };
   useEffect(() => {
@@ -37,6 +42,9 @@ const Home = () => {
   return (
     <>
       <Header name={name} account={numbAccount} />
+      <Modal show={show}>
+        <p> Carregando . . . </p>
+      </Modal>
 
       <DivCenter>
         <DivEnd>
