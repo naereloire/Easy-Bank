@@ -4,14 +4,9 @@ import Form from '../../components/form/Form.jsx';
 import { v4 as uid } from 'uuid';
 import { firebase } from '../../config/fireconfig';
 import API from '../../api';
-import {
-  RegisterPage,
-  Title,
-  Btn,
-  BtnSection,
-  DivCenter,
-} from '../../components/styledComponents/styledComponents';
-import Button from '../../components/button/Button.jsx';
+import Button from '../../components/button/Button';
+
+import { DivCenter } from '../../components/styledComponents/styledComponents';
 
 const bodyRegister = (userInfos) => {
   const bodyObj = {
@@ -106,11 +101,9 @@ const Register = () => {
       });
   };
   return (
-    <RegisterPage>
-      <Title>
+    <DivCenter>
+      <form>
         <h2>CADASTRO</h2>
-      </Title>
-      <DivCenter>
         <Form
           options={[
             'Nome',
@@ -127,14 +120,11 @@ const Register = () => {
           value={dadosUser}
           setValue={setDadosUser}
         />
-        <BtnSection>
-          <Button type="submit" name="ENVIAR" onClick={handleRegister}></Button>
-          <Button type="" name=" VOLTAR" onClick={btnBack}></Button>
-        </BtnSection>
-
+        <Button name="Enviar" type="submit" handleCLick={handleRegister} />
+        <Button name="VOLTAR" type="submit" handleCLick={btnBack} />
         <p>{error}</p>
-      </DivCenter>
-    </RegisterPage>
+      </form>
+    </DivCenter>
   );
 };
 export default Register;
