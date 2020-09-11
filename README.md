@@ -3,7 +3,7 @@
 
 - [1. Introdução](#1-introdução)
 - [2. Conheça nossa Aplicação](#2-Conheça-nossa-aplicação)
-- [3. Definição de Produto](#3-definição-de-produto-e-histórias-de-usuários)
+- [3. Protótipo](#3-protótipo)
 - [4. Implementações Futuras Checklist](#4-implementações-futuras-checklist)
 - [5. Instalação do projeto](#5-instalação-do-projeto)
 
@@ -20,19 +20,15 @@ Desenvolvemos nossa solução visando trazer educação financeira e inclusão d
 ### Planejamento
 Com base na Metodologia Ágil, foi criado um quadro no [Trello](https://trello.com/), onde definimos e dividimos as tarefas utilizando Kanban, dessa forma assim conseguíamos acompanhar, revisar e ajustar de forma rápida.
 
-
-### Nosso Quadro
-Vamos colocar foto do quadro?
-
 ## 2. Conheça nossa Aplicação
-Acesse nossa aplicação neste [link]()
+Acesse nossa aplicação neste [link](https://hubapp-7c145.web.app/)
 
-Inserir imagem da Aplicação
+![git_talent](https://user-images.githubusercontent.com/61189470/92955950-710b4300-f43c-11ea-9691-2ded683a9db6.gif)
 
 **Login de Teste:**
-
-e-mail: xxxxx 
+e-mail: nina@nina.com 
 senha: 123456
+
 
 ## 3. Protótipo
 Desenvolvemos um protótipo de baixa fidelidade no [Figma](https://www.figma.com/)
@@ -48,12 +44,6 @@ Desenvolvemos um protótipo de baixa fidelidade no [Figma](https://www.figma.com
 
 
 A aplicação foi desenvolvida utilizando [React](https://pt-br.reactjs.org/), [JavaScript, HTML5 e CSS3](https://developer.mozilla.org/pt-BR/docs/Aprender/JavaScript). Hospedamos a mesma juntamente com seu de dados no [Firebase](https://firebase.google.com/?hl=pt). Com foco na usabilidade em tablets e web. 
-
-
-## 3. Definição de Produto
-
-
-
 
 ## 4. Implementações Futuras Checklist
 Pensando em melhorias para o nossa aplicação, abaixo listamos as atividades para implementação futura:
