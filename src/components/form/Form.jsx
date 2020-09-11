@@ -9,20 +9,26 @@ const Form = ({ options, value, setValue }) => {
       return { ...value, [target.id]: target.value };
     });
   }
+
+  const requiredField = (requireInfos, option) => {
+    if (requireInfos.includes(option)) {
+      return `${option}*`
+    }
+    else {
+      return `${option}`
+    }
+  }
+
   return (
     <StyleDiv>
       {options.map((option, i) => (
-        <label key={option}>
-          {option}
-          <StyleInput
-            require={requireInfos.includes(option)}
-            type={option === 'Senha' ? 'password' : 'text'}
-            id={option}
-            onBlur={handleRegister}
-          />
-          {requireInfos.includes(option) && <span>*</span>}
-          <br />
-        </label>
+        <StyleInput
+          require={requireInfos.includes(option)}
+          type={option === 'Senha' ? 'password' : 'text'}
+          id={option}
+          placeholder={requiredField(requireInfos, option)}
+          onBlur={handleRegister}
+        />
       ))}
     </StyleDiv>
   );

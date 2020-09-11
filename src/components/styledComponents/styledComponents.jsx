@@ -45,16 +45,26 @@ width: 100%;
 touch-action: auto;
 }
 body {
-background-color: #D7D7D7;
-height: 100%;
+background-color: #00227A;
 width: 100%;
+height: 100%;
 margin: 0px;
+line-height: 1.5;
 }
 
 main {
 height: 100vh;
 }
 `;
+
+const imageLogo = styled.img`
+  width: ${props => props.width};
+  height: ${props => props.height};
+`
+imageLogo.defaultProps = {
+  width: '100%',
+  height: 'auto'
+}
 
 const borderAndRadius = `
   border: 1px solid #A04835;
@@ -73,7 +83,7 @@ const displayFlexAndRow = `
 
 const fontSizeAndFamily = `
   font-size: 30px;
-  font-family: "helvetica";
+  font-family: "Roboto", sans-serif, arial, Helvetica;
 
   @media(max-width: 400px) {
     font-size: 20px;
@@ -91,12 +101,12 @@ export const StyleInput = styled.input`
   margin: 10px;
   font-size: 20px;
   outline: none;
-  color: #a04835;
-  ${borderAndRadius}
+  color: #000000;
+  border: none;
   ${displayFlexAndColumn}
-
   &::placeholder {
-    color: #a04835;
+    color: #67686B;
+    padding-left: 15px
   }
 
   @media (max-width: 400px) {
@@ -105,12 +115,38 @@ export const StyleInput = styled.input`
   }
 `;
 
+
+
 export const StyleDiv = styled.div`
-  ${borderAndRadius}
   ${displayFlexAndColumn}
   width: 100%;
   /* align-items:center; */
   padding-top: 3rem;
+  border: none;
+`;
+
+export const BtnSize = styled.button`
+width: 300px;
+height: 35px;
+background-color: #FC4A75; 
+border: none;
+border-radius: 5px;
+`;
+
+export const Btn = styled.button`
+width: 70px;
+height: 35px;
+background-color: #FC4A75; 
+border: none;
+border-radius: 5px;
+`;
+
+
+export const BtnSection = styled.section`
+display: flex;
+display: block;
+justify-content: center;
+width: 100%;
 `;
 
 export const StyleBtn = styled.button`
@@ -142,6 +178,8 @@ export const ModalDiv = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 `;
+
+
 export const SecModal = styled.section`
   position: fixed;
   background: white;
@@ -151,6 +189,23 @@ export const SecModal = styled.section`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
+export const RegisterPage = styled.main`
+background-color: #00227A;
+height: 100%;
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+`;
+
+export const Title = styled.section`
+color: #FFFFFF;
+display: flex; 
+margin-top: 20px;
+justify-content: center;
+
+` ;
 
 export const DivButtons = styled.div`
   display: flex;
@@ -178,7 +233,7 @@ export const TextDiv = styled.span`
   color: ${(props) => (props.color ? props.color : '50px')};
   font-size: 1.5em;
   margin-left: 0.5em;
-  margin-rigth: 0.5em;
+
 `;
 
 export const DivRow = styled.div`
@@ -187,7 +242,6 @@ export const DivRow = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
 export const StyleCardBt = styled.button`
   background-color: #ffffff;
   border-radius: 10px;
