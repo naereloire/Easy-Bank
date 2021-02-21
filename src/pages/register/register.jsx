@@ -1,69 +1,50 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Form from '../../components/form/Form.jsx';
-import { v4 as uid } from 'uuid';
 import { firebase } from '../../config/fireconfig';
-import API from '../../api';
+import easyBankApi from '../../easyBankApi';
 import Button from '../../components/button/Button';
 
 import { DivCenter } from '../../components/styledComponents/styledComponents';
 
 const bodyRegister = (userInfos) => {
+
   const bodyObj = {
-    idempotencyKey: uid(),
-    owner: {
-      type: 'PF',
-      name: userInfos['Nome'],
-      companyName: 'Mirart',
-      email: userInfos['E-mail'],
-      homePhone: userInfos['Telefone'],
-      businessPhone: '1131859600',
-      mobilePhone: '1131859600',
-      address: {
-        street: userInfos['Endereço'] ? userInfos['Endereço'] : 'não informado',
-        number: userInfos['Numero'] ? userInfos['Numero'] : 'não informado',
-        district: 'Brasil',
-        city: userInfos['Cidade'] ? userInfos['Cidade'] : 'não informado',
-        state: userInfos['Estado'] ? userInfos['Estado'] : 'SP',
-        zipcode: userInfos['CEP'] ? userInfos['CEP'] : '01001001',
-      },
-      identifierDocument: {
-        document: userInfos['CPF'],
-        type: 'CPF',
-      },
-      documents: [
-        {
-          type: 'CPF',
-          document: userInfos['CPF'],
-        },
-      ],
-    },
+    name: userInfos['Nome'],
+    cadastralType: parseInt(userInfos['CPF']),
+    email: userInfos['E-mail'],
+    phone: parseInt(userInfos['Telefone']),
   };
   return bodyObj;
 };
-const startMoney = (numberAccount) => {
-  const initialBalance = 10;
-  API.get(`accounts/${numberAccount}`).then((response) => {
-    transferBtwAccounts(
-      response.data.parentFinancialOperationKey,
-      numberAccount,
-      initialBalance,
-    );
-  });
-};
-const transferBtwAccounts = (numbAccountOrigin, numbDestiny, quantityMoney) => {
-  API.post(`accounts/${numbAccountOrigin}/transfer`, {
-    amount: quantityMoney,
-    toFinancialOperationKey: numbDestiny,
-    transferCode: uid(),
-    summary: 'Tranferência entre Contas Mirart',
-    idempotencyKey: uid(),
-  }).catch((error) => {
-    console.log(error);
-  });
-};
+
+// const startMoney = (numberAccount) => {
+//   const initialBalance = 0;
+//   API.get(`accounts/${numberAccount}`).then((response) => {
+//     transferBtwAccounts(
+//       response.data.parentFinancialOperationKey,
+//       numberAccount,
+//       initialBalance,
+//     );
+//   });
+// };
+
+// const transferBtwAccounts = (numbAccountOrigin, numbDestiny, quantityMoney) => {
+//   API.post(`accounts/${numbAccountOrigin}/transfer`, {
+//     amount: quantityMoney,
+//     toFinancialOperationKey: numbDestiny,
+//     transferCode: uid(),
+//     summary: 'Tranferência entre Contas Mirart',
+//     idempotencyKey: uid(),
+//   }).catch((error) => {
+//     console.log(error);
+//   });
+// };
+
 const Register = () => {
+
   let history = useHistory();
+
   const [dadosUser, setDadosUser] = useState({}),
     [error, setError] = useState('');
   const btnBack = (event) => {
@@ -73,7 +54,7 @@ const Register = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     console.log(JSON.stringify(bodyRegister(dadosUser)));
-    API.post('accounts/child', bodyRegister(dadosUser))
+    easyBankApi.post('api/titular/', bodyRegister(dadosUser))
       .then((response) => {
         firebase
           .auth()
@@ -84,11 +65,11 @@ const Register = () => {
           .then((result) => {
             result.user
               .updateProfile({
-                photoURL: response.data.financialOperationKey,
+                // photoURL: response.data.financialOperationKey,
                 displayName: dadosUser['Nome'],
               })
               .then(() => {
-                startMoney(response.data.financialOperationKey);
+                // startMoney(response.data.financialOperationKey);
                 history.push('/home');
               });
           })
@@ -111,11 +92,6 @@ const Register = () => {
             'Senha',
             'CPF',
             'Telefone',
-            'Endereço',
-            'Numero',
-            'Cidade',
-            'Estado',
-            'CEP',
           ]}
           value={dadosUser}
           setValue={setDadosUser}

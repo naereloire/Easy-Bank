@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import API from '../../api';
+import easyBankApi from '../../easyBankApi';
 import { firebase } from '../../config/fireconfig.js';
 import Button from '../../components/buttonCard/Button-card';
 import Header from '../../components/header/Header.jsx';
@@ -37,7 +37,7 @@ const Home = () => {
 
   const getBalance = (numbAccount) => {
     setShow(true);
-    API.get(`accounts/${numbAccount}/balance`)
+    easyBankApi.get(`accounts/${numbAccount}/balance`)
       .then((response) => {
         setBalance(response.data.balance);
         setShow(false);
@@ -52,7 +52,7 @@ const Home = () => {
     numbDestiny,
     quantityMoney,
   ) => {
-    return API.post(`accounts/${numbAccountOrigin}/transfer`, {
+    return easyBankApi.post(`accounts/${numbAccountOrigin}/transfer`, {
       amount: quantityMoney,
       toFinancialOperationKey: numbDestiny,
       transferCode: uid(),
@@ -63,7 +63,7 @@ const Home = () => {
 
   const TransferAccount = () => {
     console.log(`/accounts/search?document=${transferCPF}`);
-    API.get(`/accounts/search?document=${transferCPF}`)
+    easyBankApi.get(`/accounts/search?document=${transferCPF}`)
       .then((response) => {
         console.log(response.data._embedded);
         if (response.data._embedded.accounts) {
