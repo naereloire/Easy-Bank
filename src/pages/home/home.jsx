@@ -22,8 +22,6 @@ import {
   DivCenter,
   StyleCardBt,
 } from '../../components/styledComponents/styledComponents';
-import { v4 as uid } from 'uuid';
-// import { response } from 'express';
 
 const Home = () => {
   const [name, setName] = useState(''),
@@ -39,8 +37,9 @@ const Home = () => {
 
   const getBalance = (titularId) => {
     setShow(true);
-    easyBankApi.get(`accounts/titular_id/${titularId}`)
+    easyBankApi.get(`account/titular_id/${titularId}`)
       .then((resp) => {
+        console.log(titularId)
         setBalance(resp.data.balance);
         setShow(false);
       })
@@ -49,32 +48,24 @@ const Home = () => {
         setShow(false);
       });
   };
-  const transferBtwAccounts = (
-    numbAccountOrigin,
-    numbDestiny,
-    quantityMoney,
-  ) => {
-    return easyBankApi.post(`accounts/${numbAccountOrigin}/transfer`, {
-      amount: quantityMoney,
-      toFinancialOperationKey: numbDestiny,
-      transferCode: uid(),
-      summary: 'Tranferência entre Contas Mirart',
-      idempotencyKey: uid(),
+  const transferBtwAccounts = (originTitularId, destinyId, value,) => {
+    return easyBankApi.put(`account/transfer`, {
+      originId: originTitularId,
+      destinyId: destinyId,
+      money: value,
     });
   };
 
   const TransferAccount = () => {
-    console.log(`/accounts/search?document=${transferCPF}`);
-    easyBankApi.get(`/accounts/search?document=${transferCPF}`)
+    easyBankApi.get(`titular/cpf/${transferCPF}`)
       .then((response) => {
-        console.log(response.data._embedded);
-        if (response.data._embedded.accounts) {
-          const destAccount =
-            response.data._embedded.accounts[0].financialOperationKey;
-          transferBtwAccounts(numbAccount, destAccount, transferValue)
+        if (response.data.id) {
+          const destinyTitularId =
+            response.data.id;
+          transferBtwAccounts(titularId, destinyTitularId, transferValue)
             .then(() => {
               setshowTransfer(false);
-              getBalance(numbAccount);
+              getBalance(titularId);
             })
             .catch((error) => {
               setErrorTransf(error.message);
@@ -164,7 +155,7 @@ const Home = () => {
             width="20px"
             src={updatearrow}
             onClick={() => {
-              getBalance(numbAccount);
+              getBalance(titularId);
             }}
           />
         </DivEnd>
