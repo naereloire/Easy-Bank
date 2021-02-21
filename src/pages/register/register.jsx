@@ -7,6 +7,10 @@ import Button from '../../components/button/Button';
 
 import { DivCenter } from '../../components/styledComponents/styledComponents';
 
+const getRandom = (min, max) => {
+  return Math.random() * (max - min) + min;
+};
+
 const bodyRegister = (userInfos) => {
 
   const bodyObj = {
@@ -17,6 +21,17 @@ const bodyRegister = (userInfos) => {
   };
   return bodyObj;
 };
+
+const bodyCreateAccount = (infosToCreateAccount) => {
+  const accountObject = {
+    titularId: { id: infosToCreateAccount['id'] },
+    agency: 1000,
+    accountNumber: getRandom(1000, 10000),
+    balance: 100,
+  }
+  return accountObject;
+
+}
 
 // const startMoney = (numberAccount) => {
 //   const initialBalance = 0;
@@ -54,28 +69,30 @@ const Register = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     console.log(JSON.stringify(bodyRegister(dadosUser)));
-    easyBankApi.post('api/titular/', bodyRegister(dadosUser))
+    easyBankApi.post('titular/', bodyRegister(dadosUser))
       .then((response) => {
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(
-            dadosUser['E-mail'],
-            dadosUser['Senha'],
-          )
-          .then((result) => {
-            result.user
-              .updateProfile({
-                // photoURL: response.data.financialOperationKey,
-                displayName: dadosUser['Nome'],
-              })
-              .then(() => {
-                // startMoney(response.data.financialOperationKey);
-                history.push('/home');
-              });
-          })
-          .catch((error) => {
-            setError(error.message);
-          });
+        easyBankApi.post('account/', bodyCreateAccount(response.data)).then((response) => {
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(
+              dadosUser['E-mail'],
+              dadosUser['Senha'],
+            )
+
+            .then((result) => {
+              result.user
+                .updateProfile({
+                  displayName: dadosUser['Nome'],
+                  photoURL: response.data.titularId.id
+                })
+                .then(() => {
+                  history.push('/home');
+                });
+            })
+            .catch((error) => {
+              setError(error.message);
+            });
+        })
       })
       .catch((error) => {
         setError(error.message);

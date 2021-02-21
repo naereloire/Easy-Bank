@@ -23,6 +23,7 @@ import {
   StyleCardBt,
 } from '../../components/styledComponents/styledComponents';
 import { v4 as uid } from 'uuid';
+// import { response } from 'express';
 
 const Home = () => {
   const [name, setName] = useState(''),
@@ -33,13 +34,14 @@ const Home = () => {
     [transferValue, setTransferValue] = useState(''),
     [errorTransf, setErrorTransf] = useState(''),
     [showCard, setshowCard] = useState(false),
-    [showTransfer, setshowTransfer] = useState(false);
+    [showTransfer, setshowTransfer] = useState(false),
+    [titularId, setTitularId] = useState(0);
 
-  const getBalance = (numbAccount) => {
+  const getBalance = (titularId) => {
     setShow(true);
-    easyBankApi.get(`accounts/${numbAccount}/balance`)
-      .then((response) => {
-        setBalance(response.data.balance);
+    easyBankApi.get(`accounts/titular_id/${titularId}`)
+      .then((resp) => {
+        setBalance(resp.data.balance);
         setShow(false);
       })
       .catch((error) => {
@@ -89,8 +91,16 @@ const Home = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       user ? setName(user.displayName) : setName();
-      user ? setNumbAccount(user.photoURL) : setNumbAccount();
-      getBalance(user.photoURL);
+      user ? setTitularId(user.photoURL) : setTitularId();
+      easyBankApi.get(`account/titular_id/${user.photoURL}`).then((resp) => {
+        setNumbAccount(resp.data.accountNumber)
+        setBalance(resp.data.balance);
+        setShow(false);
+      }).catch((error) => {
+        console.log(error.message);
+        setShow(false);
+      });
+
     });
   }, []);
 
