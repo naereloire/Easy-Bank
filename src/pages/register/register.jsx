@@ -4,7 +4,6 @@ import Form from '../../components/form/Form.jsx';
 import { firebase } from '../../config/fireconfig';
 import easyBankApi from '../../easyBankApi';
 import Button from '../../components/button/Button';
-
 import { DivCenter } from '../../components/styledComponents/styledComponents';
 
 const getRandom = (min, max) => {
