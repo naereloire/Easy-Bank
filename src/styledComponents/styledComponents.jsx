@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 const colorTheme = `
-background-color: #24007C;
+// background-color: #24007C;
 `;
 
 export const DivEnd = styled.div`
@@ -15,7 +15,7 @@ export const DivEnd = styled.div`
 export const Navtop = styled.div`
   display: flex;
   ${colorTheme}
-  background-color: #24007C;
+  // background-color: #24007C;
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -45,7 +45,7 @@ width: 100%;
 touch-action: auto;
 }
 body {
-background-color: #00227A;
+// background-color: #00227A;
 width: 100%;
 height: 100%;
 margin: 0px;
@@ -187,7 +187,7 @@ export const SecModal = styled.section`
 `;
 
 export const RegisterPage = styled.main`
-  background-color: #00227a;
+  // background-color: #00227a;
   height: 100%;
   display: flex;
   justify-content: center;

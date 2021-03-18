@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleInput } from '../styledComponents/styledComponents';
+import { StyleInput } from '../../../styledComponents/styledComponents';
 
 const Input = (props) => {
   const { onChange, value, type, placeholder } = props;

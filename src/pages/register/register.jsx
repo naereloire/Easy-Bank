@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Form from '../../components/form/Form.jsx';
+import Button from '../../components/common/button/Button.jsx';
+import Form from '../../components/common/form/Form.jsx';
 import { firebase } from '../../config/fireconfig';
 import easyBankApi from '../../easyBankApi';
-import Button from '../../components/button/Button';
-import { DivCenter } from '../../components/styledComponents/styledComponents';
+import { DivCenter } from '../../styledComponents/styledComponents.jsx';
 
 const getRandom = (min, max) => {
   return Math.random() * (max - min) + min;

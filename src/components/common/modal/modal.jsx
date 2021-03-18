@@ -1,5 +1,5 @@
 import React from 'react';
-import { SecModal, ModalDiv } from '../styledComponents/styledComponents';
+import { SecModal, ModalDiv } from '../../../styledComponents/styledComponents';
 
 const Modal = ({ show, children }) => {
   return (

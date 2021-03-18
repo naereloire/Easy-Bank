@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import easyBankApi from '../../easyBankApi';
 import { firebase } from '../../config/fireconfig.js';
-import Button from '../../components/buttonCard/Button-card';
-import Header from '../../components/header/Header.jsx';
+import Button from '../../components/common/button/Button.jsx';
+import Header from '../../components/common/header/Header.jsx';
 import imgCard from '../../images/card.png';
 import imgWallet from '../../images/wallet.png';
 import imgtransfer from '../../images/transfer.png';
 import imgClose from '../../images/close.png';
 import updatearrow from '../../images/arrows.png';
-import Modal from '../../components/modal/modal.jsx';
+import Modal from '../../components/common/modal/modal.jsx';
 
 import {
   StyledNavImg,
@@ -21,7 +21,7 @@ import {
   DivButtons,
   DivCenter,
   StyleCardBt,
-} from '../../components/styledComponents/styledComponents';
+} from '../../styledComponents/styledComponents';
 
 const Home = () => {
   const [name, setName] = useState(''),

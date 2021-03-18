@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleDiv, StyleInput } from '../styledComponents/styledComponents';
+import { StyleDiv, StyleInput } from '../../../styledComponents/styledComponents';
 
 const Form = ({ options, value, setValue }) => {
   const requireInfos = ['Nome', 'E-mail', 'Senha', 'CPF'];

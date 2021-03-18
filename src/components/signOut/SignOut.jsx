@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import LogOut from '../../images/signOut.png';
 import { auth } from '../../config/fireconfig';
-import { StyledNavImg } from '../styledComponents/styledComponents';
+import { StyledNavImg } from '../../styledComponents/styledComponents';
 
 const SignOut = (props) => {
   const signOut = () => {

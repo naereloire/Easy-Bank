@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { GlobalStyle } from './components/styledComponents/styledComponents.jsx';
+import { GlobalStyle } from './styledComponents/styledComponents';
 
 ReactDOM.render(
   <React.StrictMode>

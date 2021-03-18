@@ -2,7 +2,7 @@ import React from 'react';
 import {
   StyledNavImg,
   StyleCardBt,
-} from '../styledComponents/styledComponents';
+} from '../../../styledComponents/styledComponents';
 
 const ButtonCard = (props) => {
   const { handleCLick, value, subtitle, img } = props;

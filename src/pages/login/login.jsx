@@ -4,13 +4,13 @@ import { db, auth } from '../../config/fireconfig';
 import authMainErrors from './firebase-error';
 import { Link, withRouter } from 'react-router-dom';
 import Logo from '../../images/logo-mirart.png';
-import Button from '../../components/button/Button';
+import Button from '../../components/common/button/Button';
 import {
   StyleDiv,
   StyleInput,
   StyledNavImg,
   DivCenter,
-} from '../../components/styledComponents/styledComponents';
+} from '../../styledComponents/styledComponents';
 
 const Login = (props) => {
   const [email, setEmail] = useState();
