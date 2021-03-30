@@ -50,13 +50,13 @@ const Login = (props) => {
 						<StyleInput
 							type='email'
 							value={email}
-							placeholder='Digite seu e-mail'
+							placeholder='e-mail'
 							onChange={(event) => setEmail(event.target.value)}
 						/>
 						<StyleInput
 							type='password'
 							value={password}
-							placeholder='Digite sua senha'
+							placeholder='senha'
 							onChange={(event) => setPassword(event.target.value)}
 						/>
 						<Button name='Entrar' handleCLick={(e) => sendFormToAuth(e)} />
@@ -66,7 +66,7 @@ const Login = (props) => {
 					<p>
 						<Link
 							to='/register'
-							style={{ color: 'white', margin: '20px' }}
+							style={{ color: 'black', margin: '20px' }}
 							activeStyle={{ color: 'red' }}>
 							{' '}
 							CADASTRAR-SE{' '}

@@ -1,8 +1,8 @@
 /** @format */
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import contador from './contador';
+import user from './reducers/user';
 
-const reducer = combineReducers({ contador });
+const reducer = combineReducers({ user });
 const store = configureStore({ reducer });
 export default store;

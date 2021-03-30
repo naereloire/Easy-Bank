@@ -6,8 +6,8 @@ import Form from '../../components/common/form/Form';
 import { firebase } from '../../config/fireconfig';
 import easyBankApi from '../../easyBankApi';
 import { DivCenter } from '../../styledComponents/styledComponents';
-// import store from '../../Store/configureStore ';
-// import { incrementar } from '../../Store/contador';
+import store from '../../Store/configureStore ';
+import { incrementar } from '../../Store/helper/createAsyncSlice';
 
 const getRandom = (min, max) => {
 	return Math.random() * (max - min) + min;
@@ -17,7 +17,9 @@ const bodyRegister = (userInfos) => {
 	const bodyObj = {
 		name: userInfos['Nome'],
 		cadastralType: parseInt(userInfos['CPF']),
+		cadastralSituation: userInfos['Tipo CPF'],
 		email: userInfos['E-mail'],
+		password: parseInt(userInfos['Senha']),
 		phone: parseInt(userInfos['Telefone']),
 	};
 	return bodyObj;
@@ -110,7 +112,14 @@ const Register = () => {
 			<form>
 				<h2>CADASTRO</h2>
 				<Form
-					options={['Nome', 'E-mail', 'Senha', 'CPF', 'Telefone']}
+					options={[
+						'Nome',
+						'E-mail',
+						'Senha',
+						'Tipo de Cadastro PF/PJ',
+						'n° CPF/CNPJ',
+						'Telefone',
+					]}
 					value={dadosUser}
 					setValue={setDadosUser}
 				/>
