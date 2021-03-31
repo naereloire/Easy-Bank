@@ -1,13 +1,11 @@
 /** @format */
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/common/button/Button';
 import Form from '../../components/common/form/Form';
 import { firebase } from '../../config/fireconfig';
 import easyBankApi from '../../easyBankApi';
 import { DivCenter } from '../../styledComponents/styledComponents';
-import store from '../../Store/configureStore ';
-import { incrementar } from '../../Store/helper/createAsyncSlice';
 
 const getRandom = (min, max) => {
 	return Math.random() * (max - min) + min;
@@ -59,25 +57,22 @@ const bodyCreateAccount = (infosToCreateAccount) => {
 // };
 
 const Register = () => {
-	// store.subscribe(() => {
-	// 	console.log('funfou');
-	// });
-
-	// store.dispatch(incrementar());
-	let history = useHistory();
+	let navigate = useNavigate();
 
 	const [dadosUser, setDadosUser] = useState({}),
 		[error, setError] = useState('');
 	const btnBack = (event) => {
 		event.preventDefault();
-		history.push('/');
+		navigate('/');
 	};
+
 	const handleRegister = (event) => {
 		event.preventDefault();
 		console.log(JSON.stringify(bodyRegister(dadosUser)));
 		easyBankApi
 			.post('titular/', bodyRegister(dadosUser))
 			.then((response) => {
+				console.log(dadosUser)
 				easyBankApi
 					.post('account/', bodyCreateAccount(response.data))
 					.then((response) => {
@@ -95,7 +90,7 @@ const Register = () => {
 										photoURL: response.data.titularId.id,
 									})
 									.then(() => {
-										history.push('/home');
+										navigate('/home');
 									});
 							})
 							.catch((error) => {
@@ -116,8 +111,8 @@ const Register = () => {
 						'Nome',
 						'E-mail',
 						'Senha',
-						'Tipo de Cadastro PF/PJ',
-						'n° CPF/CNPJ',
+						'CPF',
+						'Tipo CPF',
 						'Telefone',
 					]}
 					value={dadosUser}

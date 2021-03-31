@@ -1,10 +1,10 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useState, useRouteMatch } from 'react';
 // eslint-disable-next-line
 import { db, auth } from '../../config/fireconfig';
 import authMainErrors from './firebase-error';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../../images/logo-mirart.png';
 import Button from '../../components/common/button/Button';
 import {
@@ -79,4 +79,4 @@ const Login = (props) => {
 	);
 };
 
-export default withRouter(Login);
+export default Login;

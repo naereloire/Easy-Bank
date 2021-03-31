@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 
 export function USER_POST(body) {
 	return {
-		url: API_URL + '/api/titular/',
+		url: '/api/titular/',
 		options: {
 			method: 'POST',
 			headers: {
@@ -23,7 +23,7 @@ export function USER_POST(body) {
 
 export function LOGGED_USER_GET(body) {
 	return {
-		url: API_URL + '/api/titular/loggeduser',
+		url: '/api/titular/loggeduser',
 		options: {
 			method: 'POST',
 			headers: {

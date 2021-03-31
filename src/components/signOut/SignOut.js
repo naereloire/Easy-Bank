@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRouteMatch} from 'react';
 import { withRouter } from 'react-router-dom';
 import LogOut from '../../images/signOut.png';
 import { auth } from '../../config/fireconfig';
@@ -27,4 +27,4 @@ const SignOut = (props) => {
   );
 };
 
-export default withRouter(SignOut);
+export default SignOut;

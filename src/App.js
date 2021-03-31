@@ -1,29 +1,19 @@
 /** @format */
 
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom';
 import Home from './pages/home/home';
 import Login from './pages/login/login';
 import Register from './pages/register/register';
-import Finance from './pages/finance/finance';
 
 const App = () => {
 	return (
 		<Router>
-			<Switch>
-				<Route path='/' exact>
-					<Login />
-				</Route>
-				<Route path='/register'>
-					<Register />
-				</Route>
-				<Route path='/home'>
-					<Home />
-				</Route>
-				<Route path='/finance'>
-					<Finance />
-				</Route>
-			</Switch>
+			<Routes>
+			<Route path='/' exact element={<Login />} />
+			<Route path='/register' element={<Register />} />
+			<Route path='/home' element={<Home />} />
+			</Routes>
 		</Router>
 	);
 };

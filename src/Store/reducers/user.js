@@ -13,3 +13,5 @@ export const fetchUser = slice.asyncAction;
 export const userLogin = (user) => async (dispatch) => {
 	await dispatch(fetchUser(user.email, user.password));
 };
+
+export default slice.reducer;
